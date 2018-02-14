@@ -20,7 +20,6 @@ deploy:
 notifications:
   email:
     recipients:
-      - one@example.com
-      - other@example.com
+      - amatroud0@gmail.com
     on_success: always  # default: change
     on_failure: never # default: always
