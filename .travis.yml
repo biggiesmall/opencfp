@@ -1,19 +1,12 @@
 language: php
-
 php:
   - '5.4'
   - '5.6'
   - '7.0'
-
-before_script:
-  - composer install
-
 script:
   - if [[ "$WITH_COVERAGE" == "true" ]]; then xdebug-enable; fi
-  - docker run --rm -v $PWD:/app phpqa/phpcs .
+  - docker run --rm -v $PWD:/app phpqa/php-cs-fixer fix --show-progress=estimating --verbose --rules=@Symfony,@PSR2
   - docker run --rm -v $PWD:/app phpqa/security-checker security:check
-  #- docker run --rm -v $PWD:/app phpqa/php-cs-fixer fix --show-progress=estimating --verbose --rules=@Symfony,@PSR2
-  #- phpunit
 
 deploy:
   provider: heroku
@@ -28,7 +21,5 @@ notifications:
   email:
     recipients:
       - amatroud0@gmail.com
-    on_success: never # default: change
-    on_failure: always # default: always
-
-  #slack:
+    on_success: always  # default: change
+    on_failure: never # default: always
