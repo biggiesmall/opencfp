@@ -12,6 +12,6 @@ deploy:
   provider: heroku
   api_key: "6d563ef6-f78e-4a99-80a6-b9d0b71382c9"
   app: cours-indust
-   on:
-     repo: biggiesmall/opencfp
-     branch: feature/fixed
+  on:
+    repo: biggiesmall/opencfp
+    branch: feature/fixed
